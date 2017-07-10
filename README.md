@@ -1,3 +1,5 @@
+# Readme file for sensor_stick exercise
+
 Ultimately in this exercise, your goal is to write a ROS node that takes in the camera data as a point cloud, filters that point cloud, then segments the individual objects using Euclidean clustering. In this step, you'll begin writing the node by adding the code to publish your point cloud data as a message on a topic called /sensor_stick/point_cloud.
 
 In the sensor_stick/scripts/ folder you'll find a file called template.py that you can use as starting point for your ROS node. The starter script looks like this:
@@ -54,38 +56,43 @@ Here are the steps you need to take to get your basic ROS node working. First, m
 
 Initialize your ROS node. In this step you are initializing a new node called "clustering".
 
-# TODO: ROS node initialization
 ```
+# TODO: ROS node initialization
+
 rospy.init_node('clustering', anonymous=True)
 ```
 
 Create Subscribers. Here you're creating a subscriber to receive the published data coming out of the pcl_callback() function where you'll be processing your point clouds.
 
-# TODO: Create Subscribers
 ```
+# TODO: Create Subscribers
+
 pcl_sub = rospy.Subscriber("/sensor_stick/point_cloud", pc2.PointCloud2, pcl_callback, queue_size=1)
 ```
 
 Create Publishers. Here you're creating two new publishers to publish the point cloud data from the table and the objects on the table to topics called pcl_table and pcl_objects, respectively.
 
-# TODO: Create Publishers
 ```
+# TODO: Create Publishers
+
 pcl_objects_pub = rospy.Publisher("/pcl_objects", PointCloud2, queue_size=1)
 pcl_table_pub = rospy.Publisher("/pcl_table", PointCloud2, queue_size=1)
 ```
 
 Spin while node is not shutdown. Here you're "blocking" or yielding control to other processes while your node is not active.
 
-# TODO: Spin while node is not shutdown
 ```
+# TODO: Spin while node is not shutdown
+ 
 while not rospy.is_shutdown():
  rospy.spin()
 ```
 
 Publish ROS messages from your pcl_callback(). For now you'll just be publishing the original pointcloud itself, but later you'll change these to be the point clouds associated with the objects and the table.
 
-# TODO: Publish ROS msg
 ```
+# TODO: Publish ROS msg
+ 
 pcl_objects_pub.publish(pcl_msg)
 pcl_table_pub.publish(pcl_msg)
 ```
