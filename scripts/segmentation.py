@@ -26,7 +26,8 @@ def pcl_callback(pcl_msg):
     # TODO: Convert PCL data to ROS messages
 
     # TODO: Publish ROS messages
-
+    pcl_objects_pub.publish(pcl_msg)
+    pcl_table_pub.publish(pcl_msg)
 
 if __name__ == '__main__':
 
